@@ -11,11 +11,22 @@ importers:
       '@atproto/api':
         specifier: ^0.14.10
         version: 0.14.10
+      '@skyware/jetstream':
+        specifier: ^0.2.2
+        version: 0.2.2(@atcute/client@2.0.8)
       dotenv:
         specifier: ^16.4.7
         version: 16.4.7
 
 packages:
+
+  '@atcute/bluesky@1.0.14':
+    resolution: {integrity: sha512-1ZBfvYsC/Tq7bqKSDzBcQRPDFguFodewow8z+MNRjS6DO9tLUWiKjm1DmR6sJfLQ2ktxU57IZPjvsvVfBdwJ6w==}
+    peerDependencies:
+      '@atcute/client': ^1.0.0 || ^2.0.0
+
+  '@atcute/client@2.0.8':
+    resolution: {integrity: sha512-OTfiWwjB4mOTlp2InGStvoQ+PIA5lvih9cTYU8BvOhzNcCBUpt4l860MKZExHjvQ9Tt1kjq/ED9zRiUjsAgIxw==}
 
   '@atproto/api@0.14.10':
     resolution: {integrity: sha512-NzKKii5XfUwxBDF0p6ud3NeQh/CCbtVowJd4C7zIYR8cWLX6RAbfANMCyP4tmFmbvUfWQ42+GectYQVuCoBxNw==}
@@ -32,12 +43,19 @@ packages:
   '@atproto/xrpc@0.6.11':
     resolution: {integrity: sha512-J2cZP8FjoDN0UkyTYBlCvKvxwBbDm4dld47u6FQK30RJy9YpSiUkdxJJ10NYqpi7JVny3M0qWQgpWJDV94+PdA==}
 
+  '@skyware/jetstream@0.2.2':
+    resolution: {integrity: sha512-d1MtWPTIFEciSzV8OClXZCJoz0DJ7aupt4EZSwpGAASYG0ZIPmZTt7RVJkoFzQyqRPHAMD7CvEwu0ut3MHX1og==}
+
   await-lock@2.2.2:
     resolution: {integrity: sha512-aDczADvlvTGajTDjcjpJMqRkOF6Qdz3YbPZm/PyW6tKPkx2hlYBzxMhEywM/tU72HrVZjgl5VCdRuMlA7pZ8Gw==}
 
   dotenv@16.4.7:
     resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
     engines: {node: '>=12'}
+
+  event-target-shim@6.0.2:
+    resolution: {integrity: sha512-8q3LsZjRezbFZ2PN+uP+Q7pnHUMmAOziU2vA2OwoFaKIXxlxl38IylhSSgUorWu/rf4er67w0ikBqjBFk/pomA==}
+    engines: {node: '>=10.13.0'}
 
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
@@ -47,6 +65,9 @@ packages:
 
   multiformats@9.9.0:
     resolution: {integrity: sha512-HoMUjhH9T8DDBNT+6xzkrd9ga/XiBI4xLr58LJACwK6G3HTOPeMz4nB4KJs33L2BelrIJa7P0VuNaVF3hMYfjg==}
+
+  partysocket@1.1.0:
+    resolution: {integrity: sha512-G+fYGqBPx5tCjqmUmhtIKxZqnS/JjYd0E94hqRe+MRvggZ/RNy3+07t+WxewqdW+BlXEhW9eXu9WA5CjCn9BDQ==}
 
   tlds@1.256.0:
     resolution: {integrity: sha512-ZmyVB9DAw+FFTmLElGYJgdZFsKLYd/I59Bg9NHkCGPwAbVZNRilFWDMAdX8UG+bHuv7kfursd5XGqo/9wi26lA==}
@@ -59,6 +80,12 @@ packages:
     resolution: {integrity: sha512-lY7CDW43ECgW9u1TcT3IoXHflywfVqDYze4waEz812jR/bZ8FHDsl7pFQoSZTz5N+2NqRXs8GBwnAwo3ZNxqhQ==}
 
 snapshots:
+
+  '@atcute/bluesky@1.0.14(@atcute/client@2.0.8)':
+    dependencies:
+      '@atcute/client': 2.0.8
+
+  '@atcute/client@2.0.8': {}
 
   '@atproto/api@0.14.10':
     dependencies:
@@ -93,15 +120,28 @@ snapshots:
       '@atproto/lexicon': 0.4.9
       zod: 3.24.2
 
+  '@skyware/jetstream@0.2.2(@atcute/client@2.0.8)':
+    dependencies:
+      '@atcute/bluesky': 1.0.14(@atcute/client@2.0.8)
+      partysocket: 1.1.0
+    transitivePeerDependencies:
+      - '@atcute/client'
+
   await-lock@2.2.2: {}
 
   dotenv@16.4.7: {}
+
+  event-target-shim@6.0.2: {}
 
   graphemer@1.4.0: {}
 
   iso-datestring-validator@2.2.2: {}
 
   multiformats@9.9.0: {}
+
+  partysocket@1.1.0:
+    dependencies:
+      event-target-shim: 6.0.2
 
   tlds@1.256.0: {}
 
